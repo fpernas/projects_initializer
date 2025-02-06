@@ -31,3 +31,7 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### node wrapper
+.node/*
+!.node/wrapper/node-wrapper.properties

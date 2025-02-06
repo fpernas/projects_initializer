@@ -1,0 +1,14 @@
+#!/bin/sh
+NODE_VERSION=18.16.1
+NODE_DIR=".node"
+NODE_BIN="$NODE_DIR/node-v$NODE_VERSION/bin"
+
+if [ ! -d "$NODE_BIN" ]; then
+    echo "Downloading Node.js v$NODE_VERSION..."
+    mkdir -p "$NODE_DIR"
+    curl -o "$NODE_DIR/node.tar.gz" "https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-x64.tar.gz"
+    tar -xzf "$NODE_DIR/node.tar.gz" -C "$NODE_DIR"
+fi
+
+export PATH="$NODE_BIN:$PATH"
+exec "$NODE_BIN/node" "$@"
